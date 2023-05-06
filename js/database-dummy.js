@@ -8,6 +8,7 @@ window.addEventListener('DOMContentLoaded', event => {
         "perPage": 10, // menampilkan 10 data per halaman
       });
     }
+
   
     fetch('https://api.publicapis.org/entries')
       .then(response => response.json())
