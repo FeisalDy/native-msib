@@ -16,6 +16,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $model->inputKartu($kode, $nama, $diskon, $iuran);
 
     // Tampilkan pesan sukses atau redirect ke halaman lain jika diperlukan
-    header("refresh:511;url=index.php?url=insertkartu");
+    header("refresh:2;url=index.php?url=pesanan");
     exit();
 }

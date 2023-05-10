@@ -82,4 +82,70 @@ class Model
             echo "Gagal input Kartu" . $e->getMessage();;
         }
     }
+
+    public function updatePelanggan($id, $kode, $nama, $alamat, $jk, $tmp_lahir, $tgl_lahir, $email, $kartu_id)
+    {
+        try {
+            $stmt = $this->pdo->prepare("UPDATE pelanggan SET kode = ?, nama_pelanggan = ?, alamat = ?, jk = ?, tmp_lahir = ?, tgl_lahir = ?, email = ?, kartu_id = ? WHERE id = ?");
+            $stmt->execute([$kode, $nama, $alamat, $jk, $tmp_lahir, $tgl_lahir, $email, $kartu_id, $id]);
+            echo "Sukses update data pelanggan";
+        } catch (PDOException $e) {
+            echo "Gagal update data pelanggan: " . $e->getMessage();
+        }
+    }
+
+    public function updatePesanan($id, $tanggal, $total, $pelanggan_id, $status)
+    {
+        try {
+            $stmt = $this->pdo->prepare("UPDATE pesanan SET tanggal = ?, total = ?, pelanggan_id = ?, status = ? WHERE id = ?");
+            $stmt->execute([$tanggal, $total, $pelanggan_id, $status, $id]);
+            echo "Sukses update data pesanan";
+        } catch (PDOException $e) {
+            echo "Gagal update data pesanan: " . $e->getMessage();
+        }
+    }
+
+    public function updateKartu($id, $kode, $nama, $diskon, $iuran)
+    {
+        try {
+            $stmt = $this->pdo->prepare("UPDATE kartu SET kode = ?, nama = ?, diskon = ?, iuran = ? WHERE id = ?");
+            $stmt->execute([$kode, $nama, $diskon, $iuran, $id]);
+            echo "Sukses update data kartu";
+        } catch (PDOException $e) {
+            echo "Gagal update data kartu: " . $e->getMessage();
+        }
+    }
+
+    public function deletePelangan($id)
+    {
+        try {
+            $stmt = $this->pdo->prepare("DELETE FROM pelanggan WHERE id = ?");
+            $stmt->execute([$id]);
+            echo "Sukses delete data pelanggan";
+        } catch (PDOException $e) {
+            echo "Gagal delete data pelanggan: " . $e->getMessage();
+        }
+    }
+
+    public function deletePesanan($id)
+    {
+        try {
+            $stmt = $this->pdo->prepare("DELETE FROM pesanan WHERE id = ?");
+            $stmt->execute([$id]);
+            echo "Sukses delete data pesanan";
+        } catch (PDOException $e) {
+            echo "Gagal delete data pesanan: " . $e->getMessage();
+        }
+    }
+
+    public function deleteKartu($id)
+    {
+        try {
+            $stmt = $this->pdo->prepare("DELETE FROM kartu WHERE id = ?");
+            $stmt->execute([$id]);
+            echo "Sukses delete data kartu";
+        } catch (PDOException $e) {
+            echo "Gagal delete data kartu: " . $e->getMessage();
+        }
+    }
 }

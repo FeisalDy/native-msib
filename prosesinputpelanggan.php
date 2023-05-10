@@ -19,6 +19,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $model->inputPelanggan($kode, $nama_pelanggan, $alamat, $jk, $tempat_lahir, $tanggal_lahir, $email, $kartu_id);
 
     // Tampilkan pesan sukses atau redirect ke halaman lain jika diperlukan
-    header("refresh:5;url=index.php?url=insertpelanggan");
+    header("refresh:2;url=index.php?url=pelanggan");
     exit();
 }
