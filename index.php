@@ -13,21 +13,50 @@ include_once 'menu.php';
                 $allowedPages = [];
                 if ($userRole === 'admin') {
                     $allowedPages = [
+                        'top',
+                        'bottom',
                         'dashboard',
-                        'url=index.php?url=pelanggan',
+                        'dummytable',
+                        'index',
+                        'insertkartu',
+                        'insertpelanggan',
+                        'insertpesanan',
+                        'kartu',
+                        'koneksi',
+                        'login',
+                        'menu',
+                        'model',
+                        'pelanggan',
                         'pesanan',
-                        'kartu'
+                        'product',
+                        'prosesdeletekartu',
+                        'prosesdeletepelanggan',
+                        'prosesdeletepesanan',
+                        'prosesinputkartu',
+                        'prosesinputpelanggan',
+                        'prosesinputpesanan',
+                        'proseslogin',
+                        'proseslogout',
+                        'prosesregisteraccount',
+                        'prosesupdatekartu',
+                        'prosesupdatepelanggan',
+                        'prosesupdatepesanan',
+                        'register'
                     ];
                 } elseif ($userRole === 'manager') {
                     $allowedPages = [
                         'dashboard',
-                        'pelanggan'
+                        'pelanggan',
+                        'pesanan',
+                        'product',
+                        'kartu',
+                        'dummytable'
                     ];
                 } else {
                     $allowedPages = [
                         'dashboard',
                         'login',
-                        'register'
+                        'register',
                     ];
                 }
                 $url = isset($_GET['url']) ? $_GET['url'] : '';
@@ -35,23 +64,25 @@ include_once 'menu.php';
                 if (in_array($url, $allowedPages)) {
                     include_once $url . '.php';
                 } else {
-                    header("refresh:2;url=index.php?url=dashboard");
-                    exit();
+                    echo 'Access denied';
                 }
             } else {
-                $url = $_GET['url'];
+                $url = isset($_GET['url']) ? $_GET['url'] : '';
                 if ($url == 'dashboard') {
                     include_once 'dashboard.php';
-                } else if (!empty($url)) {
-                    include_once '' . $url . '.php';
+                } else if ($url == 'login') {
+                    include_once 'login.php';
+                } else if ($url == 'register') {
+                    include_once 'register.php';
                 } else {
-                    'dashboard.php';
+                    include_once 'login.php'; // Redirect to login page if the URL is empty or invalid
                 }
             }
             ?>
         </div>
     </main>
 </div>
+
 
 <?php
 //memanggil file bagian bawah
