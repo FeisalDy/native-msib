@@ -1,9 +1,3 @@
-<?php
-//memanggil dan memproses file bagian atas
-include_once 'top.php';
-//memanggil dan memproses file bagian menu
-include_once 'menu.php';
-?>
 <div id="layoutSidenav_content">
     <main>
         <div class="container-fluid px-4">
@@ -28,7 +22,6 @@ include_once 'menu.php';
                 </div>
             </div>
         </div>
-
     </main>
 </div>
 

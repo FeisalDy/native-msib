@@ -148,4 +148,46 @@ class Model
             echo "Gagal delete data kartu: " . $e->getMessage();
         }
     }
+
+    public function createAccount($nama_depan, $nama_belakang, $email, $password)
+    {
+        try {
+            // Apply SHA1 encryption to the password
+            $encryptedPassword = sha1($password);
+
+            $stmt = $this->pdo->prepare("INSERT INTO user (nama_depan, nama_belakang, email, password) VALUES (?, ?, ?, ?)");
+            $stmt->execute([$nama_depan, $nama_belakang, $email, $encryptedPassword]);
+            echo "Sukses Input User";
+        } catch (PDOException $e) {
+            echo "Gagal input User" . $e->getMessage();
+        }
+    }
+
+    public function login($email, $password)
+    {
+        try {
+            // Apply SHA1 encryption to the provided password
+            $encryptedPassword = sha1($password);
+
+            $stmt = $this->pdo->prepare("SELECT * FROM user WHERE email = ? AND password = ?");
+            $stmt->execute([$email, $encryptedPassword]);
+
+            $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($user) {
+                session_start();
+                $_SESSION['user_id'] = $user['id'];
+                $_SESSION['role'] = $user['user_akses'];
+                echo "Login success";
+                header("refresh:2;url=index.php?url=dashboard");
+            } else {
+                // Invalid credentials
+                echo "Invalid email or password";
+                header("refresh:2;url=index.php?url=login");
+                exit();
+            }
+        } catch (PDOException $e) {
+            echo "Login error: " . $e->getMessage();
+        }
+    }
 }

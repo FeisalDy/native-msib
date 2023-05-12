@@ -24,7 +24,6 @@
                             <a class="nav-link" href="index.php?url=pelanggan">Data Pelanggan</a>
                             <a class="nav-link" href="index.php?url=pesanan">Data Pesanan</a>
                             <a class="nav-link" href="index.php?url=kartu">Data Kartu</a>
-                            <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a>
                         </nav>
                     </div>
                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
@@ -40,9 +39,9 @@
                             </a>
                             <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="login.html">Login</a>
-                                    <a class="nav-link" href="register.html">Register</a>
-                                    <a class="nav-link" href="password.html">Forgot Password</a>
+                                    <a class="nav-link" href="index.php?url=login">Login</a>
+                                    <a class="nav-link" href="index.php?url=register">Register</a>
+                                    <a class="nav-link" href="#">Forgot Password</a>
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
